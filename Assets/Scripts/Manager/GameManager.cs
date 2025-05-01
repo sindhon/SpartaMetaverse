@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
     public PlayerController player { get; private set; }
 
     private UIManager uiManager;
+    public static bool isFirstLoading = true;
 
     private void Awake()
     {
@@ -22,7 +23,14 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        StartGame();
+        if (!isFirstLoading)
+        {
+            StartGame();
+        }
+        else
+        {
+            isFirstLoading = false;
+        }
     }
 
 
