@@ -5,12 +5,21 @@ using UnityEngine;
 public class PopUpLoader : MonoBehaviour
 {
     public GameObject popUp;
+    public GameObject chat;
+    public GameObject changedChat;
+
+    public bool IsChanged = false;
 
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Player"))
         {
             popUp.SetActive(true);
+            if (IsChanged)
+            {
+                chat.SetActive(false);
+                changedChat.SetActive(true);
+            }
         }
     }
 
