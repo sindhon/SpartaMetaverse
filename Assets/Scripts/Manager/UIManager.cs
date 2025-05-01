@@ -28,7 +28,7 @@ public class UIManager : MonoBehaviour
 
     public void SetPlayGame()
     {
-        ChangeState(UIState.Game);
+        ChangeState(UIState.Lobby);
     }
 
     public void SetGameOver()
