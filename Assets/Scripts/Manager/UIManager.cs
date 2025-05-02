@@ -24,16 +24,24 @@ public class UIManager : MonoBehaviour
 
     private void Awake()
     {
-        homeUI = GetComponentInChildren<HomeUI>(true);
-        homeUI.Init(this);
-        lobbyUI = GetComponentInChildren<LobbyUI>(true);
-        lobbyUI.Init(this);
-        gameUI = GetComponentInChildren<GameUI>(true);
-        gameUI.Init(this);
-        gameOverUI = GetComponentInChildren<GameOverUI>(true);
-        gameOverUI.Init(this);
+        gameManager = GameManager.Instance;
 
-        ChangeState(UIState.Home);
+        homeUI = GetComponentInChildren<HomeUI>(true);
+        homeUI?.Init(this);
+        lobbyUI = GetComponentInChildren<LobbyUI>(true);
+        lobbyUI?.Init(this);
+        gameUI = GetComponentInChildren<GameUI>(true);
+        gameUI?.Init(this);
+        gameOverUI = GetComponentInChildren<GameOverUI>(true);
+        gameOverUI?.Init(this);
+
+        if (SceneManager.GetActiveScene().name == "MainScene")
+        {
+            ChangeState(UIState.Home);
+        }
+        else
+            ChangeState(UIState.Game);
+        
     }
 
     public void SetPlayGame()
@@ -41,9 +49,9 @@ public class UIManager : MonoBehaviour
         ChangeState(UIState.Lobby);
     }
 
-    public void SetPlayMiniGame()
+    public void UpdateScore(int score)
     {
-        ChangeState(UIState.Home);
+        gameUI.SetUI(score);
     }
 
     public void SetGameOverUI()

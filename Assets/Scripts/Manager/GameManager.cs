@@ -7,10 +7,9 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
 
-    public PlayerController player { get; private set; }
-
     private int currentScore = 0;
     public int CurrentScore {  get { return currentScore; } }
+
     private int bestScore = 0;
     public int BestScore { get { return bestScore; } }
 
@@ -21,14 +20,14 @@ public class GameManager : MonoBehaviour
     {
         Instance = this;
 
-        player = FindObjectOfType<PlayerController>();
-        player.Init(this);
-
         uiManager = FindObjectOfType<UIManager>();
     }
 
     private void Start()
     {
+        uiManager.UpdateScore(0);
+        bestScore = PlayerPrefs.GetInt("BestScore", 0);
+
         if (!isFirstLoading)
         {
             StartGame();
@@ -42,17 +41,13 @@ public class GameManager : MonoBehaviour
 
     public void StartGame()
     {
-        if (SceneManager.GetActiveScene().name == "MainScene")
-        {
-            uiManager.SetPlayGame();
-            return;
-        }
-
-        uiManager.SetPlayMiniGame();
+        uiManager.SetPlayGame();
     }
 
     public void GameOver()
     {
+        PlayerPrefs.SetInt("BestScore", bestScore);
+
         uiManager.SetGameOverUI();
     }
 
@@ -61,5 +56,6 @@ public class GameManager : MonoBehaviour
         currentScore += score;
         if (currentScore > bestScore)
             bestScore = currentScore;
+        uiManager.UpdateScore(currentScore);
     }
 }

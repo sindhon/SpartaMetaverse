@@ -35,13 +35,13 @@ public class PlaneController : MonoBehaviour
     {
         if (isDead)
         {
-            if (deathCooldown > 0)
+            if (deathCooldown <= 0)
             {
-                deathCooldown -= Time.deltaTime;
+                gameManager.GameOver();
             }
             else
             {
-                gameManager.GameOver();
+                deathCooldown -= Time.deltaTime;
             }
         }
     }

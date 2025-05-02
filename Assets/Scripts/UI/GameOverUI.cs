@@ -21,7 +21,7 @@ public class GameOverUI : BaseUI
 
     protected override UIState GetUIState()
     {
-        return UIState.Home;
+        return UIState.GameOver;
     }
 
     public void OnClickRestartButton()

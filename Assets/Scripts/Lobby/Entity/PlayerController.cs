@@ -7,17 +7,10 @@ using UnityEngine.Windows;
 public class PlayerController : BaseController
 {
     private Camera camera;
-    private GameManager gameManager;
 
     protected override void Start()
     {
         base.Start();
-        
-    }
-
-    public void Init(GameManager gameManager)
-    {
-        this.gameManager = gameManager;
         camera = Camera.main;
     }
 
