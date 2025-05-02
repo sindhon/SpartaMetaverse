@@ -11,9 +11,9 @@ public class GameOverUI : BaseUI
     [SerializeField] private Button restartButton;
     [SerializeField] private Button exitButton;
 
-    public override void Init(UIManager uIManager)
+    public override void Init(UIManager uiManager)
     {
-        base.Init(uIManager);
+        base.Init(uiManager);
 
         restartButton.onClick.AddListener(OnClickRestartButton);
         exitButton.onClick.AddListener(OnClickExitButton);
@@ -26,12 +26,12 @@ public class GameOverUI : BaseUI
 
     public void OnClickRestartButton()
     {
-        uIManager.RestartMiniGame();
+        uiManager.RestartMiniGame();
     }
 
     public void OnClickExitButton()
     {
-        Application.Quit();
+        uiManager.ReturnSelectScene();
     }
 
     public void SetUI(int score, int bestScore)

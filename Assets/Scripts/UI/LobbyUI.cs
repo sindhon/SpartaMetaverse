@@ -14,9 +14,9 @@ public class LobbyUI : BaseUI
 
     public GameObject chat;
 
-    public override void Init(UIManager uIManager)
+    public override void Init(UIManager uiManager)
     {
-        base.Init(uIManager);
+        base.Init(uiManager);
 
         openPortalButton.onClick.AddListener(OnClickOpenPortalButton);
         enterPortalButton.onClick.AddListener(OnClickEnterPortalButton);

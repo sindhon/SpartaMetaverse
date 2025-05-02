@@ -36,6 +36,6 @@ public class HomeUI : BaseUI
             return;
         }
 
-        uIManager.ReturnSelectScene();
+        uiManager.ReturnSelectScene();
     }
 }
