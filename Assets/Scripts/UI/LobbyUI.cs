@@ -36,6 +36,6 @@ public class LobbyUI : BaseUI
 
     public void OnClickEnterPortalButton()
     {
-        SceneManager.LoadScene(1); // 게임 씬 불러오기
+        SceneManager.LoadScene(1); // 게임 선택 씬 불러오기
     }
 }

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PopUpLoader : MonoBehaviour
 {
@@ -9,6 +10,8 @@ public class PopUpLoader : MonoBehaviour
     public GameObject changedChat;
 
     public bool IsChanged = false;
+
+    public bool IsPopUp = true;
 
     private void OnEnable()
     {
@@ -29,20 +32,30 @@ public class PopUpLoader : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            popUp.SetActive(true);
-            if (IsChanged)
+            if (IsPopUp)
             {
-                chat.SetActive(false);
-                changedChat.SetActive(true);
+                popUp.SetActive(true);
+                if (IsChanged)
+                {
+                    chat.SetActive(false);
+                    changedChat.SetActive(true);
+                }
+            }
+            else
+            {
+                SceneManager.LoadScene(2); // FlappyGame æ¿¿∏∑Œ ¿Ãµø
             }
         }
     }
 
     private void OnTriggerExit2D(Collider2D other)
     {
-        if (other.CompareTag("Player"))
+        if (IsPopUp)
         {
-            popUp.SetActive(false);
+            if (other.CompareTag("Player"))
+            {
+                popUp.SetActive(false);
+            }
         }
     }
 }
