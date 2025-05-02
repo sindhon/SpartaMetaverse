@@ -39,6 +39,10 @@ public class PlaneController : MonoBehaviour
             {
                 deathCooldown -= Time.deltaTime;
             }
+            else
+            {
+                gameManager.GameOver();
+            }
         }
     }
 

@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.SearchService;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class HomeUI : BaseUI
@@ -28,6 +30,12 @@ public class HomeUI : BaseUI
 
     public void OnClickExitButton()
     {
-        Application.Quit();
+        if (SceneManager.GetActiveScene().name == "MainScene")
+        {
+            Application.Quit();
+            return;
+        }
+
+        uIManager.ReturnSelectScene();
     }
 }
