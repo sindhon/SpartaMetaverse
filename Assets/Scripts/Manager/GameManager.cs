@@ -27,6 +27,7 @@ public class GameManager : MonoBehaviour
     {
         uiManager.UpdateScore(0);
         bestScore = PlayerPrefs.GetInt("BestScore", 0);
+        UpdateBestScore();
 
         if (!isFirstLoading)
         {
@@ -42,6 +43,11 @@ public class GameManager : MonoBehaviour
     public void StartGame()
     {
         uiManager.SetPlayGame();
+    }
+
+    public void UpdateBestScore()
+    {
+        uiManager.UpdateBestScore(bestScore);
     }
 
     public void GameOver()

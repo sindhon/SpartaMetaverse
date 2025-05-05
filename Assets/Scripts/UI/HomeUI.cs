@@ -10,9 +10,9 @@ public class HomeUI : BaseUI
     [SerializeField] private Button startButton;
     [SerializeField] private Button exitButton;
 
-    public override void Init(UIManager uIManager)
+    public override void Init(UIManager uiManager)
     {
-        base.Init(uIManager);
+        base.Init(uiManager);
 
         startButton.onClick.AddListener(OnClickStartButton);
         exitButton.onClick.AddListener(OnClickExitButton);

@@ -11,8 +11,6 @@ public class PopUpLoader : MonoBehaviour
 
     public bool IsChanged = false;
 
-    public bool IsPopUp = true;
-
     private void OnEnable()
     {
         LobbyUI.OnOpenPortalButtonClicked.AddListener(HandleOpenPortalButtonClick);
@@ -32,30 +30,20 @@ public class PopUpLoader : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            if (IsPopUp)
+            popUp.SetActive(true);
+            if (IsChanged)
             {
-                popUp.SetActive(true);
-                if (IsChanged)
-                {
-                    chat.SetActive(false);
-                    changedChat.SetActive(true);
-                }
-            }
-            else
-            {
-                SceneManager.LoadScene(2); // FlappyGame æ¿¿∏∑Œ ¿Ãµø
+                chat.SetActive(false);
+                changedChat.SetActive(true);
             }
         }
     }
 
     private void OnTriggerExit2D(Collider2D other)
     {
-        if (IsPopUp)
+        if (other.CompareTag("Player"))
         {
-            if (other.CompareTag("Player"))
-            {
-                popUp.SetActive(false);
-            }
+            popUp.SetActive(false);
         }
     }
 }

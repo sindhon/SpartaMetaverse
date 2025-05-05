@@ -29,7 +29,7 @@ public class LobbyUI : BaseUI
 
     public void OnClickOpenPortalButton()
     {
-        OnOpenPortalButtonClicked.Invoke(true); // 또는 필요에 따라 다른 값 전달
+        OnOpenPortalButtonClicked.Invoke(true);
 
         chat.SetActive(false);
     }
