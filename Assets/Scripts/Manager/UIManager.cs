@@ -4,6 +4,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.SceneManagement;
+using UnityEngine.SocialPlatforms.Impl;
 
 public enum UIState
 {
@@ -75,6 +76,7 @@ public class UIManager : MonoBehaviour
 
     public void UpdateBestScore(int bestscore)
     {
+        lobbyUI?.SetLeaderBoardUI(bestscore);
         selectUI?.SetUI(bestscore);
     }
 

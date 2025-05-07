@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.SceneManagement;
@@ -9,6 +10,7 @@ public class LobbyUI : BaseUI
 {
     [SerializeField] private Button openPortalButton;
     [SerializeField] private Button enterPortalButton;
+    [SerializeField] private TextMeshProUGUI bestScoreText;
 
     [SerializeField] private GameObject chat;
     [SerializeField] private ParticleSystem portalParticle;
@@ -41,5 +43,11 @@ public class LobbyUI : BaseUI
     public void OnClickEnterPortalButton()
     {
         uiManager.ReturnSelectScene();
+    }
+
+    public void SetLeaderBoardUI(int bestScore)
+    {
+        bestScoreText.text = bestScore.ToString();
+        Debug.Log(bestScore);
     }
 }

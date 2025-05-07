@@ -46,10 +46,11 @@ public class GameManager : MonoBehaviour
     public void StartGame()
     {
         uiManager.SetPlayGame();
+        UpdateBestScore();
     }
 
     public void UpdateBestScore()
-    {
+    {   
         uiManager.UpdateBestScore(bestScore);
     }
 
