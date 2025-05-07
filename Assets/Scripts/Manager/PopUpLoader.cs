@@ -31,7 +31,7 @@ public class PopUpLoader : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             popUp.SetActive(true);
-            if (IsChanged)
+            if (changedChat != null && IsChanged)
             {
                 chat.SetActive(false);
                 changedChat.SetActive(true);
@@ -43,7 +43,10 @@ public class PopUpLoader : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            popUp.SetActive(false);
+            if (popUp != null)
+            {
+                popUp.SetActive(false);
+            }
         }
     }
 }

@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class GameUI : BaseUI
 {
-    public TextMeshProUGUI scoreText;
+    [SerializeField] private TextMeshProUGUI scoreText;
 
     public override void Init(UIManager uIManager)
     {

@@ -39,7 +39,10 @@ public class UIManager : MonoBehaviour
         gameUI?.Init(this);
         gameOverUI = GetComponentInChildren<GameOverUI>(true);
         gameOverUI?.Init(this);
+    }
 
+    private void Start()
+    {
         if (SceneManager.GetActiveScene().name == "MainScene")
         {
             ChangeState(UIState.Home);
@@ -50,7 +53,6 @@ public class UIManager : MonoBehaviour
         }
         else
             ChangeState(UIState.Game);
-        
     }
 
     public void SetPlayGame()

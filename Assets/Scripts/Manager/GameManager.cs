@@ -29,13 +29,16 @@ public class GameManager : MonoBehaviour
         bestScore = PlayerPrefs.GetInt("BestScore", 0);
         UpdateBestScore();
 
-        if (!isFirstLoading)
+        if (SceneManager.GetActiveScene().name == "MainScene")
         {
-            StartGame();
-        }
-        else
-        {
-            isFirstLoading = false;
+            if (!isFirstLoading)
+            {
+                StartGame();
+            }
+            else
+            {
+                isFirstLoading = false;
+            }
         }
     }
 
