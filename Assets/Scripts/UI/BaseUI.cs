@@ -5,9 +5,9 @@ using UnityEngine;
 public abstract class BaseUI : MonoBehaviour
 {
     protected UIManager uiManager;
-    public virtual void Init(UIManager uIManager)
+    public virtual void Init(UIManager uiManager)
     {
-        this.uiManager = uIManager;
+        this.uiManager = uiManager;
     }
 
     protected abstract UIState GetUIState();

@@ -7,8 +7,6 @@ using UnityEngine.UI;
 
 public class LobbyUI : BaseUI
 {
-    public static UnityEvent<bool> OnOpenPortalButtonClicked = new UnityEvent<bool>();
-
     [SerializeField] private Button openPortalButton;
     [SerializeField] private Button enterPortalButton;
 
@@ -30,7 +28,7 @@ public class LobbyUI : BaseUI
 
     public void OnClickOpenPortalButton()
     {
-        OnOpenPortalButtonClicked.Invoke(true);
+        uiManager.OpenPortal();
 
         chat.SetActive(false);
 

@@ -9,21 +9,11 @@ public class PopUpLoader : MonoBehaviour
     public GameObject chat;
     public GameObject changedChat;
 
-    public bool IsChanged = false;
+    private UIManager uiManager;
 
-    private void OnEnable()
+    private void Start()
     {
-        LobbyUI.OnOpenPortalButtonClicked.AddListener(HandleOpenPortalButtonClick);
-    }
-
-    private void OnDisable()
-    {
-        LobbyUI.OnOpenPortalButtonClicked.RemoveListener(HandleOpenPortalButtonClick);
-    }
-
-    private void HandleOpenPortalButtonClick(bool value)
-    {
-        IsChanged = value;
+        uiManager = FindObjectOfType<UIManager>();
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -31,7 +21,7 @@ public class PopUpLoader : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             popUp.SetActive(true);
-            if (changedChat != null && IsChanged)
+            if (changedChat != null && uiManager.IsPortalOpen)
             {
                 chat.SetActive(false);
                 changedChat.SetActive(true);

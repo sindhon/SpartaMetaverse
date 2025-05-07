@@ -6,6 +6,8 @@ using UnityEngine.UI;
 
 public class SelectUI : BaseUI
 {
+    [SerializeField] private Button returnButton;
+
     [SerializeField] private TextMeshProUGUI bestScoreText;
     [SerializeField] private Button playButton;
 
@@ -13,12 +15,18 @@ public class SelectUI : BaseUI
     {
         base.Init(uIManager);
 
+        returnButton.onClick.AddListener(OnClickReturnButton);
         playButton.onClick.AddListener(OnClickPlayButton);
     }
 
     protected override UIState GetUIState()
     {
         return UIState.SelectGame;
+    }
+
+    public void OnClickReturnButton()
+    {
+        uiManager.ReturnLobbyScene();
     }
 
     public void OnClickPlayButton()

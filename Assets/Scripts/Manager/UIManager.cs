@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 
 public enum UIState
@@ -22,6 +23,8 @@ public class UIManager : MonoBehaviour
     GameOverUI gameOverUI;
 
     private UIState currentState;
+
+    public bool IsPortalOpen { get; private set; }
 
     GameManager gameManager;
 
@@ -55,6 +58,11 @@ public class UIManager : MonoBehaviour
             ChangeState(UIState.Game);
     }
 
+    public void OpenPortal()
+    {
+        IsPortalOpen = true;
+    }
+
     public void SetPlayGame()
     {
         ChangeState(UIState.Lobby);
@@ -79,6 +87,11 @@ public class UIManager : MonoBehaviour
     {
         gameOverUI?.SetUI(gameManager.CurrentScore, gameManager.BestScore);
         ChangeState(UIState.GameOver);
+    }
+
+    public void ReturnLobbyScene()
+    {
+        SceneManager.LoadScene("MainScene");
     }
 
     public void ReturnSelectScene()
