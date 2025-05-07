@@ -12,7 +12,8 @@ public class LobbyUI : BaseUI
     [SerializeField] private Button openPortalButton;
     [SerializeField] private Button enterPortalButton;
 
-    public GameObject chat;
+    [SerializeField] private GameObject chat;
+    [SerializeField] private ParticleSystem portalParticle;
 
     public override void Init(UIManager uiManager)
     {
@@ -32,10 +33,15 @@ public class LobbyUI : BaseUI
         OnOpenPortalButtonClicked.Invoke(true);
 
         chat.SetActive(false);
+
+        if (portalParticle != null)
+        {
+            portalParticle.Play();
+        }
     }
 
     public void OnClickEnterPortalButton()
     {
-        SceneManager.LoadScene(1); // 게임 선택 씬 불러오기
+        uiManager.ReturnSelectScene();
     }
 }
